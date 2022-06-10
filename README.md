@@ -1,5 +1,17 @@
 # UCU Software Architecture Lab Assignments
 
+## Lab 2 Protocol
+
+### Download and set up Hazelcast
+
+Hazelcast has been used via Docker. A network needed to be created. The following commands were used:
+```
+docker run  -e JAVA_OPTS="-Dhazelcast.config=/opt/hazelcast/config_ext/hazelcast.yaml" -v /Users/dmytrolopushanskyy/ucu/architecture/microservices-interaction:/opt/hazelcast/config_ext -it --network hazelcast-network --rm -e HZ_CLUSTERNAME=hz-cluster -p 5701:5701 hazelcast/hazelcast
+docker run --network hazelcast-network -p 8080:8080 hazelcast/management-center
+```
+
+
+
 ## Lab 1 Protocol
 
 ### POST request to Facade / with message payload
