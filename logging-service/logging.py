@@ -2,7 +2,7 @@ from fastapi import FastAPI, Body
 import hazelcast
 
 app = FastAPI()
-hz = hazelcast.HazelcastClient(cluster_name="hz-cluster-2")
+hz = hazelcast.HazelcastClient(cluster_name="hz-cluster-3")
 data_store = hz.get_map("distributed-map").blocking()
 
 
@@ -21,4 +21,4 @@ async def write_message(msg: str = Body(..., title="msg", embed=True),
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, port=5022)
+    uvicorn.run(app, port=5020)
