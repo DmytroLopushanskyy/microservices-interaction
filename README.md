@@ -1,5 +1,52 @@
 # UCU Software Architecture Lab Assignments
 
+## Lab 4 Protocol
+
+### Launch Kafka
+
+To launch Kafka, we need to download the archive, start Zookeeper first, then Kafka, and finally create a topic:
+```
+./bin/zookeeper-server-start.sh config/zookeeper.properties
+./bin/kafka-server-start.sh config/server.properties
+./bin/kafka-topics.sh --zookeeper 127.0.0.1:2181 --topic messages --create --partitions 3 --replication-factor 1
+```
+
+After that, three logging service and two messages services have been launched.
+
+### Write msg1-msg10
+
+Facade service logs:
+![img](https://user-images.githubusercontent.com/25267308/173257074-8ca79738-2333-4275-831e-83b9a57aede7.png)
+
+### Logging Logs
+
+Logging 1 logs:
+![img](https://user-images.githubusercontent.com/25267308/173257134-dc133b0e-4dcb-4ce2-9e9b-452d24003868.png)
+
+Logging 2 logs:
+![img](https://user-images.githubusercontent.com/25267308/173257143-4a253c6f-5e87-4a60-80b4-f059b481ed41.png)
+
+Logging 3 logs:
+![img](https://user-images.githubusercontent.com/25267308/173257146-758185c1-592c-46fc-8b8b-58edfff948b0.png)
+
+### Messages Logs
+
+Messages 1 logs:
+![img](https://user-images.githubusercontent.com/25267308/173257239-14350383-2537-4511-b142-e963ca819e3d.png)
+
+Logging 2 logs:
+![img](https://user-images.githubusercontent.com/25267308/173257227-4d98ef20-e5b3-4f84-8058-d06baa3e09b1.png)
+
+### Get Data
+
+GET request to the Facade service returns different responses based on which Messages instance is called.
+
+Response 1:
+![img](https://user-images.githubusercontent.com/25267308/173257447-c2d79337-e2d9-497e-bd87-5c89c498361c.png)
+
+Response 2
+![img](https://user-images.githubusercontent.com/25267308/173257429-8c880b5d-d6b3-4f3c-af72-69de48af268f.png)
+
 ## Lab 3 Protocol
 
 ### Launch three logging-services and write msg1-msg10 through facade-service
