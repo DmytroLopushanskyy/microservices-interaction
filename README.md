@@ -13,6 +13,11 @@ To launch Kafka, we need to download the archive, start Zookeeper first, then Ka
 
 After that, three logging service and two messages services have been launched.
 
+To start messages service, the following command needs to be used:
+```
+uvicorn api:app --workers 1 --reload --port 5030
+```
+
 ### Write msg1-msg10
 
 Facade service logs:
