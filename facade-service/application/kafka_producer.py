@@ -1,14 +1,12 @@
 import json
 from aiokafka import AIOKafkaProducer
 
-from application.constants import KAFKA_BROKER
-
 
 class KafkaProducer:
-    def __init__(self, logger, event_loop):
+    def __init__(self, logger, event_loop, broker):
         self.__logger = logger
         self.__producer = AIOKafkaProducer(
-            bootstrap_servers=[KAFKA_BROKER],
+            bootstrap_servers=[broker],
             value_serializer=lambda data: json.dumps(data).encode("utf-8"),
             loop=event_loop
         )

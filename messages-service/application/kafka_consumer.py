@@ -5,13 +5,13 @@ from application.constants import KAFKA_BROKER, KAFKA_CONSUMER_GROUP, MESSAGES_T
 
 
 class KafkaConsumer:
-    def __init__(self, logger, event_loop, data_access):
+    def __init__(self, logger, event_loop, data_access, topic, grp, broker):
         self.__logger = logger
         self.__consumer = AIOKafkaConsumer(
-            MESSAGES_TOPIC,
+            topic,
             loop=event_loop,
-            bootstrap_servers=[KAFKA_BROKER],
-            group_id=KAFKA_CONSUMER_GROUP
+            bootstrap_servers=[broker],
+            group_id=grp
         )
         self.__data_access = data_access
 

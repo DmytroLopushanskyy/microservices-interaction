@@ -1,20 +1,20 @@
 """
 Contains configs and other constants
 """
-# Services
-LOGGING_SERVICE_URLS = [
-    "http://127.0.0.1:5020",
-    "http://127.0.0.1:5021",
-    "http://127.0.0.1:5022"
-]
-MESSAGES_SERVICE_URLS = [
-    "http://127.0.0.1:5030",
-    "http://127.0.0.1:5031"
-]
+from dotenv import load_dotenv
 
-# Kafka
-KAFKA_BROKER = '127.0.0.1:9092'
-MESSAGES_TOPIC = 'messages'
+load_dotenv(dotenv_path='./facade-service.env')
+
+# Consul Configs
+CONSUL_HOST = '127.0.0.1'
+CONSUL_PORT = 8500
+
+# Key names in Consul
+KAFKA_BROKER = 'KAFKA_BROKER'
+MESSAGES_TOPIC = 'MESSAGES_TOPIC'
+LOGGING_SERVICE_NAME = "logging-service"
+MESSAGES_SERVICE_NAME = "messages-service"
 
 # App
-APP_PORT = 5000
+APP_NAME = 'facade-service'
+

@@ -6,12 +6,12 @@ import asyncio
 
 from application.kafka_consumer import KafkaConsumer
 from application.custom_logger import LOGGER
-from application.constants import MESSAGES_TOPIC
 
 
 class KafkaService:
-    def __init__(self, data_access, kafka_loop):
-        self.__producer = KafkaConsumer(LOGGER, kafka_loop, data_access)
+    def __init__(self, data_access, kafka_loop, topic, grp, broker):
+        self.__producer = KafkaConsumer(LOGGER, kafka_loop, data_access,
+                                        topic, grp, broker)
 
     async def consume(self):
         await self.__producer.consume()

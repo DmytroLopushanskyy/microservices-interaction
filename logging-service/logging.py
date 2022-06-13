@@ -1,9 +1,15 @@
-from fastapi import FastAPI, Body
+import os
 import hazelcast
+from fastapi import FastAPI, Body
+
+from application.constants import HZ_MAP_NAME, HZ_CLUSTER
+from services.consul_service import ConsulService
+
 
 app = FastAPI()
-hz = hazelcast.HazelcastClient(cluster_name="hz-cluster-3")
-data_store = hz.get_map("distributed-map").blocking()
+consul_service = ConsulService()
+hz = hazelcast.HazelcastClient(cluster_name=consul_service.get_value(HZ_CLUSTER))
+data_store = hz.get_map(consul_service.get_value(HZ_MAP_NAME)).blocking()
 
 
 @app.get('/')
@@ -19,6 +25,12 @@ async def write_message(msg: str = Body(..., title="msg", embed=True),
     return {'status': 'ok'}
 
 
+@app.on_event("shutdown")
+def shutdown():
+    print('Deregistering from Consul')
+    consul_service.deregister()
+
+
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, port=5020)
+    uvicorn.run(app, port=int(os.getenv('PORT')))

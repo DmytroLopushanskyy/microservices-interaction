@@ -1,14 +1,12 @@
-import random
 import json
 
-from application.constants import LOGGING_SERVICE_URLS
 from data_access import DataAccess
 
 
 class Logging:
-    def __init__(self):
+    def __init__(self, logging_url):
         self.__data_access = DataAccess()
-        self.logging_url = self.__get_logging_url()
+        self.logging_url = logging_url
 
     async def get_data(self):
         """
@@ -32,10 +30,3 @@ class Logging:
         except Exception as e:
             return False, f'error, logging unavailable. {e}'
         return True, 'ok'
-
-    def __get_logging_url(self):
-        """
-        Get a random logging service URL.
-        :return: str
-        """
-        return random.choice(LOGGING_SERVICE_URLS)

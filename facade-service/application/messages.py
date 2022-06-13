@@ -1,14 +1,12 @@
 import json
-import random
 
-from application.constants import MESSAGES_SERVICE_URLS
 from data_access import DataAccess
 
 
 class Messages:
-    def __init__(self):
+    def __init__(self, messages_url):
         self.__data_access = DataAccess()
-        self.messages_url = self.__get_messages_url()
+        self.messages_url = messages_url
 
     async def get_data(self):
         """
@@ -21,10 +19,3 @@ class Messages:
             return True, messages_resp
         except Exception as e:
             return False, f'error, messages unavailable. {e}'
-
-    def __get_messages_url(self):
-        """
-        Get a random messages service URL.
-        :return: str
-        """
-        return random.choice(MESSAGES_SERVICE_URLS)
