@@ -2,3 +2,6 @@ FastAPI
 uvicorn
 httpx
 asyncio
+hazelcast
+aiokafka
+consul
