@@ -11,7 +11,7 @@ To launch Kafka, we need to download the archive, start Zookeeper first, then Ka
 ./bin/kafka-topics.sh --zookeeper 127.0.0.1:2181 --topic messages --create --partitions 3 --replication-factor 1
 ```
 
-After that, three logging service and two messages services have been launched.
+After that, three logging services and two messages services have been launched.
 
 To start messages service, the following command needs to be used:
 ```
@@ -39,7 +39,7 @@ Logging 3 logs:
 Messages 1 logs:
 ![img](https://user-images.githubusercontent.com/25267308/173257239-14350383-2537-4511-b142-e963ca819e3d.png)
 
-Logging 2 logs:
+Messages 2 logs:
 ![img](https://user-images.githubusercontent.com/25267308/173257227-4d98ef20-e5b3-4f84-8058-d06baa3e09b1.png)
 
 ### Get Data
