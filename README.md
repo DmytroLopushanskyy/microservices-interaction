@@ -54,7 +54,7 @@ uvicorn api:app --workers 1 --reload --port 5030
 ### Write msg1-msg10
 
 Facade service logs (trimmed):
-![img]([https://user-images.githubusercontent.com/25267308/173257074-8ca79738-2333-4275-831e-83b9a57aede7.png](https://user-images.githubusercontent.com/25267308/173271298-c1452e27-dcad-4635-915d-728dc03825e1.png))
+![img](https://user-images.githubusercontent.com/25267308/173257074-8ca79738-2333-4275-831e-83b9a57aede7.png)
 
 ### Logging Logs
 
